@@ -10,39 +10,39 @@
 The project has two differenced parts: the source of the code in the folder `src` and the tests in the folder `tests`. The first of them follow the following structure:
 
     .
-    ├── exceptions										# Exception files
-    │   ├── ActivityNotFoundException.java				# When an activity cannot be found
-    │   ├── DEDException.java							# All exceptions extends this
-    │   ├── LimitExceededException.java					# When an activity reaches the limit of seats
-    │   ├── NoActivitiesException.java					# When a container does not have any activity
-    │   ├── NoRatingsException.java						# When a container does not have any rating
-    │   ├── NoRecordsException.java						# When a container does not have any record
-    │   ├── OrganizationNotFoundException.java			# When an organization cannot be found
-    │   ├── UserNotFoundException.java					# When a user cannot be found
-    │   └── UserNotInActivityException.java				# When a user is not in a specific activity
-    ├── model											# Models of the project
-    │   ├── Activity.java								# Activity
-    │   ├── Organization.java							# Organization
-    │   ├── Rating.java									# Rating
-    │   ├── Record.java									# Record
-    │   ├── Ticket.java									# Ticket
-    │   ├── User.java									# User
-    ├── util											# Utilities
-    │   ├── OrderedVector.java							# Ordered vector with no limit elements
-    │   └── OrderedVectorDictionary.java				# Ordered dictionary vector with limit of elements
-    ├── SafetyActivities4Covid19.java					# ADT interface
-    └── SafetyActivities4Covid19Impl.java				# ADT implementation
+    ├── exceptions                                      # Exception files
+    │   ├── ActivityNotFoundException.java              # When an activity cannot be found
+    │   ├── DEDException.java                           # All exceptions extends this
+    │   ├── LimitExceededException.java                 # When an activity reaches the limit of seats
+    │   ├── NoActivitiesException.java                  # When a container does not have any activity
+    │   ├── NoRatingsException.java                     # When a container does not have any rating
+    │   ├── NoRecordsException.java                     # When a container does not have any record
+    │   ├── OrganizationNotFoundException.java          # When an organization cannot be found
+    │   ├── UserNotFoundException.java                  # When a user cannot be found
+    │   └── UserNotInActivityException.java             # When a user is not in a specific activity
+    ├── model                                           # Models of the project
+    │   ├── Activity.java                               # Activity
+    │   ├── Organization.java                           # Organization
+    │   ├── Rating.java                                 # Rating
+    │   ├── Record.java                                 # Record
+    │   ├── Ticket.java                                 # Ticket
+    │   ├── User.java                                   # User
+    ├── util                                            # Utilities
+    │   ├── OrderedVector.java                          # Ordered vector with no limit elements
+    │   └── OrderedVectorDictionary.java                # Ordered dictionary vector with limit of elements
+    ├── SafetyActivities4Covid19.java                   # ADT interface
+    └── SafetyActivities4Covid19Impl.java               # ADT implementation
 
 The second one, the tests, have the following files:
 
     .
-    ├── utils											# Utilities
-    │   └── DateUtils.java								# Datetime creator
-    ├── FactorySafetyActivities4Covid19.java			# Factory of the ADT
-    ├── OrderedVectorDictionaryTest.java				# Ordered dictionary vector tests
-    ├── OrderedVectorTest.java							# Ordered vector tests
-    ├── SafetyActivities4Covid19PR1ExtendedTest.java	# Extended ADT tests
-    └── SafetyActivities4Covid19PR1Test.java			# Main ADT tests
+    ├── utils                                           # Utilities
+    │   └── DateUtils.java                              # Datetime creator
+    ├── FactorySafetyActivities4Covid19.java            # Factory of the ADT
+    ├── OrderedVectorDictionaryTest.java                # Ordered dictionary vector tests
+    ├── OrderedVectorTest.java                          # Ordered vector tests
+    ├── SafetyActivities4Covid19PR1ExtendedTest.java    # Extended ADT tests
+    └── SafetyActivities4Covid19PR1Test.java            # Main ADT tests
 
 ### Personalized ADT
 The project contains two personalized ADT: an ordered vector and an ordered dictionary vector defined in the following files, respectively `OrderedVector.java` and `OrderedVectorDictionary.java`. Both of them didn't exist in the library of this subject, so the project has to define them as a new ADT. The ordered vector has been used to store the best activities of all the system ordered by its rating. The second one has been used for the cultural activities, using the id of that activity as a key.
