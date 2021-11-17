@@ -6,6 +6,19 @@
 ### License
 [MIT](https://choosealicense.com/licenses/mit/)
 
+### Firsts words
+This ADT, SafetyActivities4Covid19Impl, contains the implementation of the tool that can manage the cultural activities securely because of the pandemic. That is, it has all the entities needed to managed it correctly such as users, organizations, activities, etc. The public methods to use it are defined in the interface of the ADT and the implementation of them are in the class named SafetyActivities4Covid19Impl.
+
+According to the solution of the PAC1 of that ADT, the data types used are the same. The proposed solution only have little differences from the official solution in things such as:
+- The ADT has two private integers to store the number of users and organizations that has in the java array.
+- The activity has an integer to store the number of total tickets sold.
+- The ticket has a pointer to the user owner of itself.
+
+Of all these data types have been included to satisfy the signatures of the interface or to handle the amount of users and organizations of the system.
+
+### Conceptual model
+For a better understanding of this ADT, a conceptual model of that have been designed. It can be found in the folder named `uml`.
+
 ### Structure
 The project has two differenced parts: the source of the code in the folder `src` and the tests in the folder `tests`. The first of them follow the following structure:
 
@@ -43,19 +56,6 @@ The second one, the tests, have the following files:
     ├── OrderedVectorTest.java                          # Ordered vector tests
     ├── SafetyActivities4Covid19PR1ExtendedTest.java    # Extended ADT tests
     └── SafetyActivities4Covid19PR1Test.java            # Main ADT tests
-
-### Firsts words
-This ADT, SafetyActivities4Covid19Impl, contains the implementation of the tool that can manage the cultural activities securely because of the pandemic. That is, it has all the entities needed to managed it correctly such as users, organizations, activities, etc. The public methods to use it are defined in the interface of the ADT and the implementation of them are in the class named SafetyActivities4Covid19Impl.
-
-According to the solution of the PAC1 of that ADT, the data types used are the same. The proposed solution only have little differences from the official solution in things such as:
-- The ADT has two private integers to store the number of users and organizations that has in the java array.
-- The activity has an integer to store the number of total tickets sold.
-- The ticket has a pointer to the user owner of itself.
-
-Of all these data types have been included to satisfy the signatures of the interface or to handle the amount of users and organizations of the system.
-
-### Conceptual model
-For a better understanding of this ADT, a conceptual model of that have been designed. It can be found in the folder named `uml`.
 
 ### Personalized ADT inside the ADT
 The project contains two personalized ADT: an ordered vector and an ordered dictionary vector defined in the following files, respectively `OrderedVector.java` and `OrderedVectorDictionary.java`. Both of them didn't exist in the library of this subject, so the project has to define them as a new ADT. The ordered vector has been used to store the best activities of all the system ordered by its rating. The second one has been used for the cultural activities, using the id of that activity as a key.
