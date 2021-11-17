@@ -60,10 +60,12 @@ public class User {
 		return covidCertificate;
 	}
 	
+	// Add an activity to the linked list of them
 	public void addActivity(Activity activity) {
 		this.activities.afegirAlFinal(activity);
 	}
 	
+	// Check if the linked list of activities contain the activity of the parameter
 	public boolean isInActivity(Activity activity) {
 		
 		boolean found = false;
@@ -77,10 +79,12 @@ public class User {
 		return found;
 	}
 	
+	// Return an iterator with all the activities of this user
 	public Iterador<Activity> activities() {
 		return this.activities.elements();
 	}
 	
+	// Get the amount of activities of this user
 	public int numActivities() {
 		return this.activities.nombreElems();
 	}

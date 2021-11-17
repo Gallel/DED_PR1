@@ -94,6 +94,7 @@ public class Activity {
 		return organizationId;
 	}
 
+	// Get the mean of the ratings of this activity
 	public Double rating() {
 		int num = this.ratings.nombreElems();
 		
@@ -109,32 +110,39 @@ public class Activity {
 		return (double)rating / (double)num;
 	}
 	
+	// Return an iterator with all the ratings of this activity
 	public Iterador<uoc.ded.practica.model.Rating> ratings() {
 		return this.ratings.elements();
 	}
 	
+	// Add a rating to the linked list
 	public void addRating(uoc.ded.practica.model.Rating rating) {
 		this.ratings.afegirAlFinal(rating);
 	}
 	
+	// Get the amount of ratings of this activity
 	public int getRatingNum() {
 		return this.ratings.nombreElems();
 	}
 	
+	// Check if the activity is full according to the max assistants
 	public boolean isFull() {
 		return this.totalTickets == this.getMaxAssistants();
 	}
 	
+	// Create a ticket, increment the total tickets and enqueue it to the queue of tickets
 	public void createTicket(User user) {
 		this.totalTickets++;
 		Ticket ticket = new Ticket(this.totalTickets, user);
 		this.tickets.encuar(ticket);
 	}
 	
+	// Return the ticket dequeued
 	public Ticket getTicket() {
 		return this.tickets.desencuar();
 	}
 	
+	// Return the amount of tickets available
 	public int getAvailableTickets() {
 		return this.num - this.totalTickets;
 	}

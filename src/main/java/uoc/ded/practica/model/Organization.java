@@ -40,14 +40,17 @@ public class Organization {
 		return description;
 	}
 	
+	// Return an iterator with all the activities of this organization
 	public Iterador<Activity> activities() {
 		return this.activities.elements();
 	}
 	
+	// Insert an activity to the linked list of activities
 	public void insertActivity(Activity activity) {
 		this.activities.afegirAlFinal(activity);
 	}
 	
+	// Get the amount of activities of this organization
 	public int numActivities() {
 		return this.activities.nombreElems();
 	}

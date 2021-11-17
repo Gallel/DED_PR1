@@ -304,7 +304,7 @@ public class SafetyActivities4Covid19Impl implements SafetyActivities4Covid19 {
 		Organization org = this.getOrganization(organizationId);
 		
 		// Throw an exception if the organization doesn't have any activity
-		if (!org.activities().hiHaSeguent())
+		if (org.numActivities() == 0)
 			throw new NoActivitiesException();
 		
 		// Return the iterator of activities of the organization searched
@@ -318,7 +318,7 @@ public class SafetyActivities4Covid19Impl implements SafetyActivities4Covid19 {
 		User user = this.getUser(userId);
 		
 		// Throw an exception if the user doesn't participate in any activity
-		if (!user.activities().hiHaSeguent())
+		if (user.numActivities() == 0)
 			throw new NoActivitiesException();
 		
 		// Return the iterator of activities of the user searched

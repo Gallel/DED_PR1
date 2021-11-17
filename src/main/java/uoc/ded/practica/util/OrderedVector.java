@@ -45,6 +45,7 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 		return this.n == this.elements.length;
 	}
 	
+	// Get the element of the index position
 	public E get(int index) {
 		
 		if (index < 0 || index >= this.n)
@@ -56,6 +57,7 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 		return this.elements[index];
 	}
 	
+	// Add the elem in its correct position according to the comparator
 	public void add(E elem) {
 		
 		if (this.estaPle())
@@ -65,10 +67,9 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 		this.n++;
 		
 		E aux;
-		boolean ordered = false;
 		int index = this.n - 1;
 		
-		while (index > 0 && !ordered) {
+		while (index > 0) {
 			aux = this.get(index - 1);
 			
 			if (this.comparator.compare(elem, aux) < 0) {
@@ -76,12 +77,13 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 				this.elements[index - 1] = elem;
 			}
 			else
-				ordered = true;
+				break;
 			
 			index--;
 		}
 	}
 	
+	// Update the value of the elem: delete it and added it again
 	public void update(E elem) {
 		int index = this.getIndex(elem);
 		
@@ -95,6 +97,7 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 		this.add(elem);
 	}
 	
+	// Get the position of elem to delete it in the update method
 	private int getIndex(E elem) {
 		int index = 0;
 		
@@ -109,6 +112,7 @@ public class OrderedVector<E> implements ContenidorAfitat<E> {
 		return -1;
 	}
 	
+	// Delete the element of the position index
 	private void delete(int index) {
 		
 		for (int i = index; i < this.n - 1; i++) {

@@ -29,6 +29,7 @@ public class OrderedVectorDictionary<K, E> extends DiccionariVectorImpl<K, E> im
 		return this.n == this.diccionari.length;
 	}
 	
+	// Insert the elem linked with the key
 	public void insert(K key, E elem) {
 		if (this.estaPle())
 			throw new ExcepcioContenidorPle();
@@ -55,6 +56,7 @@ public class OrderedVectorDictionary<K, E> extends DiccionariVectorImpl<K, E> im
 		}
 	}
 	
+	// Get the element by its key
 	public E get(K key) {
 		int index = binarySearch(key, 0, this.n - 1);
 		
@@ -66,6 +68,7 @@ public class OrderedVectorDictionary<K, E> extends DiccionariVectorImpl<K, E> im
 		return this.diccionari[index].getValor();
 	}
 	
+	// Binary search to be used in the get method, O(log n)
 	private int binarySearch(K key, int left, int right) {
 		int mid = (left + right) / 2;
 		ClauValor<K, E> aux = this.diccionari[mid];
