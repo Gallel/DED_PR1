@@ -36,13 +36,12 @@ public class OrderedVectorDictionary<K, E> extends DiccionariVectorImpl<K, E> im
 		
 		super.afegir(key, elem);
 		
-		boolean ordered = false;
 		int index = this.n - 1;
 		
 		ClauValor<K, E> aux;
 		ClauValor<K, E> last = this.diccionari[index];
 		
-		while (index > 0 && !ordered) {
+		while (index > 0) {
 			aux = this.diccionari[index-1];
 			
 			if (this.comparator.compare((K)last.getClau(), (K)aux.getClau()) < 0)
@@ -50,7 +49,7 @@ public class OrderedVectorDictionary<K, E> extends DiccionariVectorImpl<K, E> im
 				this.diccionari[index] = aux;
 				this.diccionari[index-1] = last;
 			} else
-				ordered = true;
+				break;
 			
 			index--;
 		}
