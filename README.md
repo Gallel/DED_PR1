@@ -44,7 +44,20 @@ The second one, the tests, have the following files:
     ├── SafetyActivities4Covid19PR1ExtendedTest.java    # Extended ADT tests
     └── SafetyActivities4Covid19PR1Test.java            # Main ADT tests
 
-### Personalized ADT
+### Firsts words
+This ADT, SafetyActivities4Covid19Impl, contains the implementation of the tool that can manage the cultural activities securely because of the pandemic. That is, it has all the entities needed to managed it correctly such as users, organizations, activities, etc. The public methods to use it are defined in the interface of the ADT and the implementation of them are in the class named SafetyActivities4Covid19Impl.
+
+According to the solution of the PAC1 of that ADT, the data types used are the same. The proposed solution only have little differences from the official solution in things such as:
+- The ADT has two private integers to store the number of users and organizations that has in the java array.
+- The activity has an integer to store the number of total tickets sold.
+- The ticket has a pointer to the user owner of itself.
+
+Of all these data types have been included to satisfy the signatures of the interface or to handle the amount of users and organizations of the system.
+
+### Conceptual model
+For a better understanding of this ADT, a conceptual model of that have been designed. It can be found in the folder named `uml`.
+
+### Personalized ADT inside the ADT
 The project contains two personalized ADT: an ordered vector and an ordered dictionary vector defined in the following files, respectively `OrderedVector.java` and `OrderedVectorDictionary.java`. Both of them didn't exist in the library of this subject, so the project has to define them as a new ADT. The ordered vector has been used to store the best activities of all the system ordered by its rating. The second one has been used for the cultural activities, using the id of that activity as a key.
 
 ### Custom methods in the ADT
@@ -70,24 +83,43 @@ The source contains all the needed exceptions that the interface of the ADT need
 ### Tests
 The initial version of the project has its own tests. Nevertheless, in order to test all the scenarios that can be produced in that project, it contains an extended version of that tests handling the pointer of the most active user and all the exceptions that the main test file didn't check.
 
-- **testUsersFull**: catch the exception threw when the array of users is full.
-- **testOrganizationsFull**: catch the exception threw when someone tries to insert an organization in an invalid position.
-- **testActivitiesFull**: catch the exception threw when the ordered dictionary vector is full.
-- **testCheckNoRecords**: catch the exception threw when there are no records in the stack of records.
-- **testGetAllActivitiesByUser**: check the iterators of the activities by user and catch the exception threw when there are no activities for that user.
-- **testAddRatingIllegal**: catch all the exceptions threw of method addRating.
-- **testCreateTicketAndAssignNoUserNoActivity**: catch all the exceptions threw of method createTicket.
-- **testAssignSeatNoActivity**: catch the exception threw of assignSeat method when the activity is not found.
-- **testBestActivityEmpty**: catch the exception threw of bestActivity method when there are no activities yet.
-- **testMostActiveUser**: check the return of the pointer of mostActiveUser method and catch the exception threw when there are no active users.
+`SafetyActivities4Covid19PR1Test.java`:
+- **testAddUser**: check if a user has been added correctly to its array.
+- **testAddOrganization**: check if an organization has been added correctly to its array.
+- **testAddRecord**: check if a record has been added correctly to its stack.
+- **testAddRecordAndOrganizationNotFound**: catch the exception thrown when the organization of a new record doesn't exist.
+- **testAddRecordAndUpdate**: check if the record of the top has been updated correctly according to the number of pending records and rejected records percentage.
+- **testGetActivitiesByOrganization**: check if the activities has been added to the linked list of activities of the organization.
+- **testGetActivitiesByOrganizationAndNOActiviesException**: catch the exception thrown when the organization doesn't have activities in its linked list and someone tries to get them as an iterator.
+- **testGetAllActivities**: check all activities of the ordered dictionary vector.
+- **testGetAllActivitiesByUserAndNoActivitiesException**: catch the exception thrown when the user doesn't have activities in its linked list and someone tries to get them as an iterator.
+- **testAddRating**: check if the ratings of an activity have been added correctly, and check if the ordered vector of best activities has been updated correctly.
+- **testCreateTicketAndAssign**: check if the bought of a ticket works and check the process of assign a seat according to the ticket returned.
+- **testCreateTicketAndLimitExceededException**: catch the exception thrown when someone tries to create a new ticket when the limit of the activity has been reached.
+
+`SafetyActivities4Covid19PR1ExtendedTest.java`:
+- **testUsersFull**: catch the exception thrown when the array of users is full.
+- **testOrganizationsFull**: catch the exception thrown when someone tries to insert an organization in an invalid position.
+- **testActivitiesFull**: catch the exception thrown when the ordered dictionary vector is full.
+- **testCheckNoRecords**: catch the exception thrown when there are no records in the stack of records.
+- **testGetAllActivitiesByUser**: check the iterators of the activities by user and catch the exception thrown when there are no activities for that user.
+- **testAddRatingIllegal**: catch all the exceptions thrown of method addRating.
+- **testCreateTicketAndAssignNoUserNoActivity**: catch all the exceptions thrown of method createTicket.
+- **testAssignSeatNoActivity**: catch the exception thrown of assignSeat method when the activity is not found.
+- **testBestActivityEmpty**: catch the exception thrown of bestActivity method when there are no activities yet.
+- **testMostActiveUser**: check the return of the pointer of mostActiveUser method and catch the exception thrown when there are no active users.
 
 Last but not least, every new ADT creating for this project has its own tests to check its correct performance for every public method.
+
+`OrderedVectorTest.java`:
 - **testOrderedVectorAdd**: check if the elements are added correctly.
 - **testOrderedVectorIsEmpty**: check the method estaBuit.
 - **testOrderedVectorIsFull**: check the method estaPle.
 - **testOrderedVectorNumElems**: check the amount of elements of the ordered vector.
 - **testOrderedVectorGet**: check the method get to obtain the element of specific index.
 - **testOrderedVectorUpdate**: check the update of an element.
+
+`OrderedVectorDictionaryTest.java`:
 - **testOrderedVectorDictionaryInsert**: check if the elements are added correctly.
 - **testOrderedVectorDictionaryIsEmpty** check the method estaBuit.
 - **testOrderedVectorDictionaryIsFull**: check the method estaPle.
@@ -98,6 +130,3 @@ The project contains 4 images for each test file successfully passed.
 - `img/testSafetyActivities4Covid19PR1ExtendedTest.png`
 - `img/testOrderedVectorTest.png`
 - `img/testOrderedVectorDictionaryTest.png`
-
-### Others
-Additionally, in the folder named as UML there is an image of the conceptual design of the project.
