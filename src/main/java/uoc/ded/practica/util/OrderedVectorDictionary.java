@@ -7,19 +7,19 @@ import uoc.ei.tads.DiccionariVectorImpl;
 import uoc.ei.tads.ExcepcioContenidorPle;
 import uoc.ei.tads.Utilitats;
 
-public class OrderedVectorDictionary<K, E> extends DiccionariVectorImpl<K, E> implements ContenidorAfitat<E> {
+public class OrderedVectorDictionary<C, E> extends DiccionariVectorImpl<C, E> implements ContenidorAfitat<E> {
 
 	private static final long serialVersionUID = Utilitats.getSerialVersionUID();;
 	
 	public static final int MAXIM_ELEMENTS_PER_DEFECTE = 256;
 
-	private Comparator<K> comparator;
+	private Comparator<C> comparator;
 	
-	public OrderedVectorDictionary(Comparator<K> comparator) {
+	public OrderedVectorDictionary(Comparator<C> comparator) {
 		this(MAXIM_ELEMENTS_PER_DEFECTE, comparator);
 	}
 	
-	public OrderedVectorDictionary(int max, Comparator<K> comparator) {
+	public OrderedVectorDictionary(int max, Comparator<C> comparator) {
 		super(max);
 		this.comparator = comparator;
 	}
@@ -29,22 +29,24 @@ public class OrderedVectorDictionary<K, E> extends DiccionariVectorImpl<K, E> im
 		return this.n == this.diccionari.length;
 	}
 	
-	// Insert the elem linked with the key
-	public void insert(K key, E elem) {
+	@Override
+	public void afegir(C clau, E obj) {
 		if (this.estaPle())
 			throw new ExcepcioContenidorPle();
 		
-		super.afegir(key, elem);
+		// Add the element
+		super.afegir(clau, obj);
 		
 		int index = this.n - 1;
 		
-		ClauValor<K, E> aux;
-		ClauValor<K, E> last = this.diccionari[index];
+		ClauValor<C, E> aux;
+		ClauValor<C, E> last = this.diccionari[index];
 		
+		// Move it until the TAD is ordered
 		while (index > 0) {
 			aux = this.diccionari[index-1];
 			
-			if (this.comparator.compare((K)last.getClau(), (K)aux.getClau()) < 0)
+			if (this.comparator.compare((C)last.getClau(), (C)aux.getClau()) < 0)
 			{
 				this.diccionari[index] = aux;
 				this.diccionari[index-1] = last;
@@ -55,9 +57,9 @@ public class OrderedVectorDictionary<K, E> extends DiccionariVectorImpl<K, E> im
 		}
 	}
 	
-	// Get the element by its key
-	public E get(K key) {
-		int index = binarySearch(key, 0, this.n - 1);
+	@Override
+	public E consultar(C clau) {
+		int index = binarySearch(clau, 0, this.n - 1);
 		
 		if (index < 0 || index >= this.n)
 			// Must return null rather than throw ExcepcioPosicioInvalida
@@ -68,16 +70,16 @@ public class OrderedVectorDictionary<K, E> extends DiccionariVectorImpl<K, E> im
 	}
 	
 	// Binary search to be used in the get method, O(log n)
-	private int binarySearch(K key, int left, int right) {
+	private int binarySearch(C key, int left, int right) {
 		int mid = (left + right) / 2;
-		ClauValor<K, E> aux = this.diccionari[mid];
+		ClauValor<C, E> aux = this.diccionari[mid];
 		
 		if (left > right)
 			return -1;
 		else {
-			if (this.comparator.compare(key, (K)aux.getClau()) < 0)
+			if (this.comparator.compare(key, (C)aux.getClau()) < 0)
 				return binarySearch(key, 0, mid - 1);
-			else if (this.comparator.compare(key, (K)aux.getClau()) > 0)
+			else if (this.comparator.compare(key, (C)aux.getClau()) > 0)
 				return binarySearch(key, mid + 1, right);
 			else
 				return mid;

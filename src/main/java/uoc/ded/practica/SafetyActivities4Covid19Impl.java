@@ -154,7 +154,7 @@ public class SafetyActivities4Covid19Impl implements SafetyActivities4Covid19 {
 			Activity activity = new Activity(record.getActId(), record.getDescription(), record.getDate(), record.getMode(), record.getMaxAssistants(), record.getOrganizationId());
 			
 			// Add it to the ordered vector dictionary of activities
-			this.activities.insert(record.getActId(), activity);
+			this.activities.afegir(record.getActId(), activity);
 			// Add it to the ordered vector of best activities
 			this.bestActivities.add(activity);
 			
@@ -395,7 +395,7 @@ public class SafetyActivities4Covid19Impl implements SafetyActivities4Covid19 {
 	@Override
 	public Activity getActivity(String actId) {
 		// Return the activity by its id from the ordered vector dictionary this.activities
-		return this.activities.get(actId);
+		return this.activities.consultar(actId);
 	}
 
 	@Override

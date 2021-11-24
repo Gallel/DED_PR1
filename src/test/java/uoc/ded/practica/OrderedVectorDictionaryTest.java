@@ -39,20 +39,20 @@ public class OrderedVectorDictionaryTest {
 		OrderedVectorDictionary<String, Integer> elems = new OrderedVectorDictionary<String, Integer>(10, Activity.COMPARATOR);
 		
 		// Insert elements in a random order
-		elems.insert("F", 6);
-		elems.insert("B", 2);
-		elems.insert("H", 8);
-		elems.insert("A", 1);
-		elems.insert("J", 10);
-		elems.insert("D", 4);
-		elems.insert("I", 9);
-		elems.insert("E", 5);
-		elems.insert("C", 3);
-		elems.insert("G", 7);
+		elems.afegir("F", 6);
+		elems.afegir("B", 2);
+		elems.afegir("H", 8);
+		elems.afegir("A", 1);
+		elems.afegir("J", 10);
+		elems.afegir("D", 4);
+		elems.afegir("I", 9);
+		elems.afegir("E", 5);
+		elems.afegir("C", 3);
+		elems.afegir("G", 7);
 		
 		// Try to add another element when it is full return an exception
 		try {
-			elems.insert("K", 11);
+			elems.afegir("K", 11);
 			fail("fail ExcepcioContenidorPle");
 		} catch(ExcepcioContenidorPle e) {}
 
@@ -74,21 +74,21 @@ public class OrderedVectorDictionaryTest {
 		Assert.assertEquals(true, elems.estaBuit());
 		
 		// Insert elements in a random order
-		elems.insert("F", 6);
-		elems.insert("B", 2);
-		elems.insert("H", 8);
-		elems.insert("A", 1);
-		elems.insert("J", 10);
+		elems.afegir("F", 6);
+		elems.afegir("B", 2);
+		elems.afegir("H", 8);
+		elems.afegir("A", 1);
+		elems.afegir("J", 10);
 		
 		// Now, elems is not empty because it has elements inside
 		Assert.assertEquals(false, elems.estaBuit());
 		
 		// Insert more elements in a random order until elems will be full
-		elems.insert("D", 4);
-		elems.insert("I", 9);
-		elems.insert("E", 5);
-		elems.insert("C", 3);
-		elems.insert("G", 7);
+		elems.afegir("D", 4);
+		elems.afegir("I", 9);
+		elems.afegir("E", 5);
+		elems.afegir("C", 3);
+		elems.afegir("G", 7);
 		
 		// However elems is full, it cannot be empty because it has elements inside
 		Assert.assertEquals(false, elems.estaBuit());
@@ -102,21 +102,21 @@ public class OrderedVectorDictionaryTest {
 		Assert.assertEquals(false, elems.estaPle());
 		
 		// Insert elements in a random order
-		elems.insert("F", 6);
-		elems.insert("B", 2);
-		elems.insert("H", 8);
-		elems.insert("A", 1);
-		elems.insert("J", 10);
+		elems.afegir("F", 6);
+		elems.afegir("B", 2);
+		elems.afegir("H", 8);
+		elems.afegir("A", 1);
+		elems.afegir("J", 10);
 		
 		// Now, elems is not empty, but not full yet
 		Assert.assertEquals(false, elems.estaPle());
 		
 		// Insert more elements in a random order until elems will be full
-		elems.insert("D", 4);
-		elems.insert("I", 9);
-		elems.insert("E", 5);
-		elems.insert("C", 3);
-		elems.insert("G", 7);
+		elems.afegir("D", 4);
+		elems.afegir("I", 9);
+		elems.afegir("E", 5);
+		elems.afegir("C", 3);
+		elems.afegir("G", 7);
 		
 		// Now has to be full because it only has 10 positions
 		Assert.assertEquals(true, elems.estaPle());
@@ -127,33 +127,33 @@ public class OrderedVectorDictionaryTest {
 		OrderedVectorDictionary<String, Integer> elems = new OrderedVectorDictionary<String, Integer>(10, Activity.COMPARATOR);
 		
 		// Cannot find anything because elems is just initialized
-		Assert.assertEquals(elems.get("F"), null);
+		Assert.assertEquals(elems.consultar("F"), null);
 		
 		// Insert elements in a random order
-		elems.insert("F", 6);
-		elems.insert("B", 2);
-		elems.insert("H", 8);
-		elems.insert("A", 1);
-		elems.insert("J", 10);
-		elems.insert("D", 4);
-		elems.insert("I", 9);
-		elems.insert("E", 5);
-		elems.insert("C", 3);
-		elems.insert("G", 7);
+		elems.afegir("F", 6);
+		elems.afegir("B", 2);
+		elems.afegir("H", 8);
+		elems.afegir("A", 1);
+		elems.afegir("J", 10);
+		elems.afegir("D", 4);
+		elems.afegir("I", 9);
+		elems.afegir("E", 5);
+		elems.afegir("C", 3);
+		elems.afegir("G", 7);
 		
 		// All elements has to be found by its key and in its correct position according to the comparator
-		Assert.assertEquals((Integer)1, elems.get("A"));
-		Assert.assertEquals((Integer)2, elems.get("B"));
-		Assert.assertEquals((Integer)3, elems.get("C"));
-		Assert.assertEquals((Integer)4, elems.get("D"));
-		Assert.assertEquals((Integer)5, elems.get("E"));
-		Assert.assertEquals((Integer)6, elems.get("F"));
-		Assert.assertEquals((Integer)7, elems.get("G"));
-		Assert.assertEquals((Integer)8, elems.get("H"));
-		Assert.assertEquals((Integer)9, elems.get("I"));
-		Assert.assertEquals((Integer)10, elems.get("J"));
+		Assert.assertEquals((Integer)1, elems.consultar("A"));
+		Assert.assertEquals((Integer)2, elems.consultar("B"));
+		Assert.assertEquals((Integer)3, elems.consultar("C"));
+		Assert.assertEquals((Integer)4, elems.consultar("D"));
+		Assert.assertEquals((Integer)5, elems.consultar("E"));
+		Assert.assertEquals((Integer)6, elems.consultar("F"));
+		Assert.assertEquals((Integer)7, elems.consultar("G"));
+		Assert.assertEquals((Integer)8, elems.consultar("H"));
+		Assert.assertEquals((Integer)9, elems.consultar("I"));
+		Assert.assertEquals((Integer)10, elems.consultar("J"));
 		
 		// A non existing key has to fail
-		Assert.assertEquals(elems.get("Z"), null);
+		Assert.assertEquals(elems.consultar("Z"), null);
 	}
 }
